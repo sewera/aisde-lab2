@@ -37,7 +37,7 @@ void Array<RECORD>::badanieAlgorytmow(){
 //-----------------------------------------------------------------------------
 // Sortowanie przez selekcję
 //-----------------------------------------------------------------------------
-this->selectionSort(this->firstIndex(), this->lastIndex());
+// this->selectionSort(this->firstIndex(), this->lastIndex());
 
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
@@ -49,7 +49,7 @@ this->selectionSort(this->firstIndex(), this->lastIndex());
 //    this->insertionSort(this->firstIndex(), this->lastIndex());
 
 /*
-    SequenceGenerator* ciag = new KnuthSequenceGenerator(lastIndex());
+//    SequenceGenerator* ciag = new KnuthSequenceGenerator(lastIndex());
 //  SequenceGenerator* ciag = new SedgewickSequenceGenerator(lastIndex());
 //  SequenceGenerator* ciag = new TokudaSequenceGenerator(lastIndex());
 //  SequenceGenerator* ciag = new CustomSequenceGenerator(lastIndex());
@@ -57,6 +57,7 @@ this->selectionSort(this->firstIndex(), this->lastIndex());
     this->insertionSortShell(this->firstIndex(), this->lastIndex(), ciag);
     delete ciag;
 */
+
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 
@@ -67,7 +68,7 @@ this->selectionSort(this->firstIndex(), this->lastIndex());
 //    this->quickSortLomuto(this->firstIndex(), this->lastIndex());
 //
 //    this->quickSortHoare(this->firstIndex(), this->lastIndex());
-//    this->quickSortHoareFactor(this->firstIndex(), this->lastIndex(), 9);
+    this->quickSortHoareFactor(this->firstIndex(), this->lastIndex(), 9);
 //    this->quickSortHoareMedianaFactor(this->firstIndex(), this->lastIndex(), 3, 0);
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------

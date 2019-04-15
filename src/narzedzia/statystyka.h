@@ -74,7 +74,7 @@ public:
 
         RAPORT_ALGORYTM
         RAPORT_IMPLEMENTACJA
-        if(glebokoscRekurencjiMaxBak != 0) cout << "\"recurrence\": " << glebokoscRekurencjiMaxBak << ", ";
+        if(glebokoscRekurencjiMaxBak != 0) cout << ", \"recurrence\": " << glebokoscRekurencjiMaxBak;
 
         cout << " }";
     }
