@@ -21,7 +21,7 @@ def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix):
                          style='sci',
                          scilimits=(-3, 3),
                          useOffset=False)
-    plt.savefig('out/' + alg_name + '_' + file_suffix + '.pdf')
+    plt.savefig('out/pdf/' + alg_name + '_' + file_suffix + '.pdf')
 
 
 def plot_standard(argv):

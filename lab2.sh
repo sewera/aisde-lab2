@@ -9,7 +9,7 @@ fi
 sed -i -e "s/^#define WYPISZ_NA_KONSOLE tak/#define WYPISZ_NA_KONSOLE nie/g" ./src/control.h
 
 read -p "Enter filename (without an extension): " filename
-read -p "Enter tested values (space separated): " values
+read -p "Enter tested array sizes (space separated): " values
 if [ -z "$values" ]
 then
   values="50 150 250 500 1000 1500 2000 2500 5000 10000\
@@ -23,7 +23,7 @@ pass=0
 make clean > /dev/null # delete all binaries
 echo "[I] Removed binaries"
 
-mkdir -p out
+mkdir -p out/pdf
 
 echo -ne "[\n" >> ./out/$filename.json
 echo -ne "[ " >> ./out/$filename\_count.json
@@ -57,3 +57,9 @@ echo -ne "]\n" >> ./out/$filename\_count.json
 
 python3 plot.py out/$filename.json out/$filename\_count.json
 echo "[I] Plots should be in out/ directory"
+echo
+echo "Tip: you can compare on one plot two or more different algorighms"
+echo "Usage: python3 plot.py -c <input_file0>,<input_file1>,... -u <in_file_count>"
+echo " for example:"
+echo "python3 plot.py -c out/shell_knuth.json,out/shell_sedgewick.json,out/shell_tokuda.json -n out/shell_knuth_count.json"
+echo "When comparing, use the same array sizes across all algorighms"
