@@ -44,7 +44,7 @@
 
 //===============================================================================
 // Liczność badanego zbioru
-#define LICZNOSC 500000
+#define LICZNOSC 1000000
 
 //===============================================================================
 // Wypisz tablicę na ekran przed posortowaniem i po nim
