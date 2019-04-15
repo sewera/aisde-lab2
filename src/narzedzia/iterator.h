@@ -68,11 +68,11 @@ public:
 	}
 
 	static void raport(){
-        cout << "'implementation': { ";
-        cout << "'comparisons': " << liczbaPorownanBak << ", ";
-        cout << "'additions': " << liczbaDodawanBak << ", ";
-        cout << "'multiplications': " << liczbaMnozenBak << ", ";
-        cout << "'divisions': " << liczbaDzielenBak << " }, ";
+        cout << "\"implementation\": { ";
+        cout << "\"comparisons\": " << liczbaPorownanBak << ", ";
+        cout << "\"additions\": " << liczbaDodawanBak << ", ";
+        cout << "\"multiplications\": " << liczbaMnozenBak << ", ";
+        cout << "\"divisions\": " << liczbaDzielenBak << " } ";
     }
 #endif
 

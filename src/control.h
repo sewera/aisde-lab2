@@ -29,7 +29,7 @@
 // Nie ma potrzeby modyfikowania implementacji algorytmów (pod warunkiem poprawnego zdefiniowania własnych rekordów).
 
 //===============================================================================
-#define NUMER_INDEKSU  999999  // tu wstawić numer indeksu
+#define NUMER_INDEKSU 300499 // tu wstawić numer indeksu
 // można też  "losowo" wybierać liczbę startową dla każdego uruchomienia aplikacji
 //#define NUMER_INDEKSU  clock()
 
@@ -44,11 +44,11 @@
 
 //===============================================================================
 // Liczność badanego zbioru
-#define LICZNOSC 30
+#define LICZNOSC 75
 
 //===============================================================================
 // Wypisz tablicę na ekran przed posortowaniem i po nim
-#define WYPISZ_NA_KONSOLE tak
+#define WYPISZ_NA_KONSOLE nie
 
 //===============================================================================
 // Flaga sterująca wyborem rodzaju standardowego rekordu.
