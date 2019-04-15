@@ -70,11 +70,13 @@ public:
 
     void raport(const char* nazwa){
         cout << "\n\n" << nazwa << "\n\n";
-        cout << "{'execution_time': " << numOfSeconds <<", ";
+        cout << "{ 'execution_time': " << numOfSeconds <<", ";
 
         RAPORT_ALGORYTM
         RAPORT_IMPLEMENTACJA
         if(glebokoscRekurencjiMaxBak != 0) cout << "Rekurencja:  " << glebokoscRekurencjiMaxBak << endl;
+
+        cout << " }" << endl;
     }
 
 	void virtual wypiszNaKonsole  (bool = false)    { throw Error("Blad: Nie zdefiniowano funkcji wirtualnej wypiszNaKonsole"); }

@@ -68,9 +68,9 @@ public:
 		liczbaZamianBak = liczbaZamian;
 	}
 	static void raport(){
-        cout << "Algorytm: " << endl;
-        cout << "   porownania: " << liczbaPorownanBak << endl;
-        cout << "   kopiowania: " << liczbaZamianBak << endl;
+        cout << "'algorithm': { ";
+        cout << "'comparisons': " << liczbaPorownanBak << ", ";
+        cout << "'swaps': " << liczbaZamianBak << " }, ";
     }
 #endif
 
