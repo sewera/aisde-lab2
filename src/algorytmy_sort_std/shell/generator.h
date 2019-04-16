@@ -61,10 +61,12 @@ protected:
 /* TA KLASA CZEKA NA IMPLEMENTACJĘ FUNKCJI GENERUJĄCEJ CIĄG */
 /* W RAZIE POTRZEBY MOŻNA UTWORZYĆ WIĘCEJ PODOBNYCH KLAS */
 class CustomSequenceGenerator : public SequenceGenerator {
+public:
+    CustomSequenceGenerator(const Iterator maksIndex) { generate(maksIndex); }
 protected:
-    Iterator nextHvalue(const Iterator i) const {
+    Iterator nextHvalue(Iterator i) const {
         /* ZAMIAST "1" MUSIMY ZWRÓCIĆ i-TY ELEMENT CIĄGU! */
-        return 1;
+        return ceil(pow(2,(long)i));
     }
 };
 //*********** Koniec klas wyprowadzonych z klasy SequenceGenerator *************

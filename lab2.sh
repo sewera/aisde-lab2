@@ -15,7 +15,7 @@ then
   values="50 150 250 500 1000 1500 2000 2500 5000 10000\
   15000 20000 25000 30000 40000 50000 60000 75000 85000 100000\
   125000 150000 200000 250000 300000 400000 500000 600000 700000\
-  800000 900000 1000000"
+  800000 900000 1000000 1025000 1050000 1075000 1100000 1250000 1500000 1750000 2000000"
 fi
 count=$(echo $values | wc -w)
 pass=0
@@ -62,4 +62,4 @@ echo "Tip: you can compare on one plot two or more different algorighms"
 echo "Usage: python3 plot.py -c <input_file0>,<input_file1>,... -u <in_file_count>"
 echo " for example:"
 echo "python3 plot.py -c out/shell_knuth.json,out/shell_sedgewick.json,out/shell_tokuda.json -n out/shell_knuth_count.json"
-echo "When comparing, use the same array sizes across all algorighms"
+echo "When comparing, use the same array sizes across all algorithms"

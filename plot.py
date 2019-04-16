@@ -1,4 +1,5 @@
-# import numpy as np
+import numpy as np
+from scipy.stats import linregress
 from matplotlib import pyplot as plt
 import sys
 import getopt
@@ -22,6 +23,30 @@ def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix):
                          scilimits=(-3, 3),
                          useOffset=False)
     plt.savefig('out/pdf/' + alg_name + '_' + file_suffix + '.pdf')
+
+
+def plot_log(execution_time_array, data_array_size,
+             alg_name):
+    '''Log plot of exec time'''
+    slope, _, _, _, err = linregress(execution_time_array, data_array_size)
+    exec_time_log_arr = [
+                         np.log2(y) / (np.log2(x) - np.log2(slope))
+                         for x, y in zip(data_array_size, execution_time_array)
+                         ]
+    median = np.median(exec_time_log_arr)
+    median_arr = [median for x in data_array_size]
+    plt.plot(
+        data_array_size, exec_time_log_arr,
+        data_array_size, median_arr, '--'
+    )
+    plt.annotate(str(median),
+                 xy=(data_array_size[-3],
+                     median_arr[-1]),
+                 arrowprops=dict(facecolor='red', shrink=0.05))
+    save_plot(alg_name, 'exec_log', 'Log of exec time',
+              ['exponent'],
+              'Log of exec time')
+    plt.clf()
 
 
 def plot_standard(argv):
@@ -71,6 +96,8 @@ def plot_standard(argv):
     save_plot(alg_name, 'oper_count', 'No. of operations', legends,
               'No. of total operations')
     plt.clf()
+
+    plot_log(execution_time_array, data_array_size, alg_name)
 
 
 def plot_compare(opts, args):
