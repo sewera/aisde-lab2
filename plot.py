@@ -27,37 +27,38 @@ def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix):
 
 def plot_log(execution_time_array, data_array_size,
              alg_name):
-    '''Log plot of exec time'''
-    slope, _, _, _, err = linregress(execution_time_array, data_array_size)
-    exec_time_log_arr = [
-                         np.log2(y) / (np.log2(x) - np.log2(slope))
-                         for x, y in zip(data_array_size, execution_time_array)
-                         ]
-    median = np.median(exec_time_log_arr)
-    median_arr = [median for x in data_array_size]
+    '''Log plot of exec time
+    Not very universal, you may have to tweak
+    some numbers'''
+    data_big_val = data_array_size[27:]  # which elem to start from
+    exec_time_log_arr = np.log2(execution_time_array[27:])
+    slope, _, _, _, err = linregress(data_big_val, exec_time_log_arr)
+    # print(slope)
+    # print(err)
     plt.plot(
-        data_array_size, exec_time_log_arr,
-        data_array_size, median_arr, '--'
+        data_big_val, exec_time_log_arr
     )
-    plt.annotate(str(median),
-                 xy=(data_array_size[-3],
-                     median_arr[-1]),
-                 arrowprops=dict(facecolor='red', shrink=0.05))
-    save_plot(alg_name, 'exec_log', 'Log of exec time',
-              ['exponent'],
+    plt.text(0.6e6, 0.75,  # position of the text relative to axes
+             'Linregress: slope = {0}\n err = {1}'.format(slope, err),
+             horizontalalignment='left',
+             verticalalignment='baseline')
+    save_plot(alg_name, 'exec_log_lin', 'Log of exec time',
+              [''],
               'Log of exec time')
     plt.clf()
 
 
-def plot_standard(argv):
+def plot_standard(argv, do_plot_log=False):
     try:
         with open(str(argv[0])) as input_file:
             data = json.load(input_file)
         with open(str(argv[1])) as input_array_size_file:
             data_array_size = json.load(input_array_size_file)
     except Exception:
-        print('Usage: python plot.py <input_file> <input_array_size_file>')
-        print('\tfor regular plotting')
+        print('Usage: python plot.py [-l] <input_file>'
+              '<input_array_size_file>')
+        print('\tfor regular plotting, -l option for'
+              'plotting log (you will need to tweak numbers in source file)')
         print('python plot.py -c <input_file0>,...'
               ' -n <input_array_size_file>')
         print('\tfor comparisons')
@@ -96,8 +97,8 @@ def plot_standard(argv):
     save_plot(alg_name, 'oper_count', 'No. of operations', legends,
               'No. of total operations')
     plt.clf()
-
-    plot_log(execution_time_array, data_array_size, alg_name)
+    if do_plot_log:
+        plot_log(execution_time_array, data_array_size, alg_name)
 
 
 def plot_compare(opts, args):
@@ -130,13 +131,16 @@ def plot_compare(opts, args):
 def main(argv):
     std_mode = True
     try:
-        opts, args = getopt.getopt(argv, 'c:n:')
+        opts, args = getopt.getopt(argv, 'c:n:l')
     except getopt.GetoptError:
         exit()
     for opt, arg in opts:
         if opt == '-c':
             std_mode = False
             plot_compare(opts, args)
+        if opt == '-l':
+            std_mode = False
+            plot_standard(argv[1:], True)
 
     if std_mode:
         plot_standard(argv)
