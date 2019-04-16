@@ -10,10 +10,12 @@ Set desired parameters in `src/control*` files, then:
 ```
 and follow the instructions
 
-Usage of comparison of two or more algorightms is explained in lab2.sh file.
+Usage of comparison of two or more algorithms is explained in lab2.sh file.
 
 Everyting mine licensed under MIT license. If stated otherwise (different copyright claim), the code is 2019 (C) Błażej Sewera
 
 Everything not mine has no explicit license statement. Please do not use this code unless having a permission, verbal or written from people stated in copyright claims.
+
+Works quite well on Linux, did not test on other platforms
 
 > As always, made with <3 by jazz
