@@ -18,4 +18,6 @@ Everything not mine has no explicit license statement. Please do not use this co
 
 Works quite well on Linux, did not test on other platforms
 
-> As always, made with <3 by jazz
+-----------------------------
+
+As always, made with <3 by [jazz](https://github.com/jazzsewera)
