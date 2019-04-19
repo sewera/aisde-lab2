@@ -7,7 +7,8 @@ import json
 import re
 
 
-def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix):
+def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix,
+              is_log=False):
     plt.title(title_prefix + ' for {0} algorithm'.format(
                                                          re.sub(r'\_',
                                                                 ' ',
@@ -15,7 +16,10 @@ def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix):
               )
 
     plt.legend(legend_list, loc='upper left')
-    plt.xlabel('No. of elements in array')
+    if is_log:
+        plt.xlabel('Log of no. of elements')
+    else:
+        plt.xlabel('No. of elements in array')
     plt.ylabel(y_label)
     plt.grid()
     plt.ticklabel_format(axis='both',
@@ -30,21 +34,23 @@ def plot_log(execution_time_array, data_array_size,
     '''Log plot of exec time
     Not very universal, you may have to tweak
     some numbers'''
-    data_big_val = data_array_size[27:]  # which elem to start from
-    exec_time_log_arr = np.log2(execution_time_array[27:])
-    slope, _, _, _, err = linregress(data_big_val, exec_time_log_arr)
+    data_big_val = data_array_size  # which elem to start from
+    data_big_val_log = np.log2(data_big_val)
+    exec_time_log_arr = np.log2(execution_time_array)
+    slope, _, _, _, err = linregress(data_big_val_log, exec_time_log_arr)
     # print(slope)
     # print(err)
     plt.plot(
-        data_big_val, exec_time_log_arr
+        data_big_val_log, exec_time_log_arr
     )
-    plt.text(0.6e6, 0.75,  # position of the text relative to axes
+    plt.text(10.0, 0.75,  # position of the text relative to axes
              'Linregress: slope = {0}\n err = {1}'.format(slope, err),
              horizontalalignment='left',
              verticalalignment='baseline')
     save_plot(alg_name, 'exec_log_lin', 'Log of exec time',
               [''],
-              'Log of exec time')
+              'Log of exec time',
+              is_log=True)
     plt.clf()
 
 
