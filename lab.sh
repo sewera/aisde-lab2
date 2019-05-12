@@ -6,7 +6,7 @@ then
   sed -i -e "s/^#define NUMER_INDEKSU *[0-9]*/#define NUMER_INDEKSU $id_no/g" ./src/control.h
 fi
 
-read -p "Enter excercise number [2/3]: " ex_no
+read -p "Enter exercise number [2/3]: " ex_no
 if [[ "$ex_no" -eq 2 ]]
 then
   sed -i -e "s/^#define CWICZENIE_2 *.../#define CWICZENIE_2 tak/g" ./src/control.h
