@@ -6,7 +6,7 @@ Nine hours of life wasted, hope someone, someday will have easier life because o
 Usage:
 Set desired parameters in `src/control*` files, then:
 ```bash
-./lab2.sh
+./lab.sh
 ```
 and follow the instructions
 
