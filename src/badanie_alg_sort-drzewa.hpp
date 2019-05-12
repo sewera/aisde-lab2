@@ -42,7 +42,7 @@ void Array<RECORD>::badanieAlgorytmow(){
 //	swapArray();
 	
 #elif BADANIE_TURNIEJU
-    this->tournamentSortLeft(this->firstIndex(), this->lastIndex());
+//    this->tournamentSortLeft(this->firstIndex(), this->lastIndex());
 //    this->tournamentSortRight(this->firstIndex(), this->lastIndex());
 //    this->tournamentSortLeft_1(this->firstIndex(), this->lastIndex());
 //    this->tournamentSortLeft_2(this->firstIndex(), this->lastIndex());

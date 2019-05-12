@@ -6,6 +6,14 @@ then
   sed -i -e "s/^#define NUMER_INDEKSU *[0-9]*/#define NUMER_INDEKSU $id_no/g" ./src/control.h
 fi
 
+read -p "Enter excercise number [2/3]: " ex_no
+if [[ "$ex_no" -eq 2 ]]
+then
+  sed -i -e "s/^#define CWICZENIE_2 *.../#define CWICZENIE_2 tak/g" ./src/control.h
+else
+  sed -i -e "s/^#define CWICZENIE_2 *.../#define CWICZENIE_2 nie/g" ./src/control.h
+fi
+
 sed -i -e "s/^#define WYPISZ_NA_KONSOLE tak/#define WYPISZ_NA_KONSOLE nie/g" ./src/control.h
 
 read -p "Enter filename (without an extension): " filename
@@ -20,10 +28,19 @@ fi
 count=$(echo $values | wc -w)
 pass=0
 
-make clean > /dev/null # delete all binaries
+if [[ "$ex_no" -eq 3 ]]
+then
+  read -p "Repeating values? [0/1]: " repeat
+fi
+
+make clean -j 4 > /dev/null # delete all binaries
+# if there are problems with multi-threading,
+# change -j 4 to -j 2 or -j 1
 echo "[I] Removed binaries"
 
 mkdir -p out/pdf
+rm -f ./out/$filename.json
+rm -f ./out/$filename\_count.json
 
 echo -ne "[\n" >> ./out/$filename.json
 echo -ne "[ " >> ./out/$filename\_count.json
@@ -33,10 +50,19 @@ echo "[I] Started sample collection"
 for N in $values
 do
   ((pass=pass+1))
-  sed -i -e "s/^#define LICZNOSC [0-9]*/#define LICZNOSC $N/g" ./src/control.h
+  sed -i -e "s/^#define LICZNOSC *[0-9]*/#define LICZNOSC $N/g" ./src/control.h
+  if [[ "$ex_no" -eq 3 && "$repeat" -eq 1 ]]
+  then
+    sed -i -e "s/^#define MAX_WARTOSC_KLUCZA *[0-9]* *\/\//#define MAX_WARTOSC_KLUCZA $(($N/100)) \/\//g" ./src/control.h
+  elif [[ "$ex_no" -eq 3 && "$repeat" -eq 0 ]]
+  then
+    sed -i -e "s/^#define MAX_WARTOSC_KLUCZA *[0-9]* *\/\//#define MAX_WARTOSC_KLUCZA 0 \/\//g" ./src/control.h
+  fi
 
   rm -f ./aisde23 ./bin/main.o
-  make > /dev/null
+  make -j 4 > /dev/null
+  # if there are problems with multi-threading,
+  # change -j 4 to -j 2 or -j 1
   echo -n "."
 
   ./aisde23 | tail -n 1 >> ./out/$filename.json
@@ -56,6 +82,8 @@ echo -ne "]\n" >> ./out/$filename.json
 echo -ne "]\n" >> ./out/$filename\_count.json
 
 python3 plot.py out/$filename.json out/$filename\_count.json
+# You may have to change python3 to python on OSX
+
 echo "[I] Plots should be in out/ directory"
 echo
 echo "Tip: you can compare on one plot two or more different algorighms"

@@ -20,7 +20,7 @@
 
 //===============================================================================
 // Flagi wyboru zadania
-// UWAGA: w poniższych falgach może być tylko JEDNO tak
+// UWAGA: w poniższych flagach może być tylko JEDNO tak
 #define BADANIE_KOPCA        tak
 #define BADANIE_TURNIEJU     nie
 #define BADANIE_HUFFMANA     nie

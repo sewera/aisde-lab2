@@ -29,14 +29,14 @@
 // Nie ma potrzeby modyfikowania implementacji algorytmów (pod warunkiem poprawnego zdefiniowania własnych rekordów).
 
 //===============================================================================
-#define NUMER_INDEKSU 999999 // tu wstawić numer indeksu
+#define NUMER_INDEKSU 300499 // tu wstawić numer indeksu
 // można też  "losowo" wybierać liczbę startową dla każdego uruchomienia aplikacji
 //#define NUMER_INDEKSU  clock()
 
 
 //===============================================================================
 // Flaga określająca numer ćwiczenia
-#define CWICZENIE_2        tak  // tak - ćwiczenie drugie (badanie "standardowych" algorytmów sortowania)
+#define CWICZENIE_2 nie  // tak - ćwiczenie drugie (badanie "standardowych" algorytmów sortowania)
 							    // nie - ćwiczenie trzecie (badanie algorytmów bazujących na drzewach binarnych)
 // UWAGA: niektóre algorytmy w ćwiczeniu 3 mogą wykorzystywać "standardowe" algorytmy sortowania lub ich elementy,
 // więc ustawienie w pliku control_sort-std.h flag sterujących "standardowymi" algorytmami może mieć znaczenie dla parametrów wydajnościowych.
@@ -44,7 +44,7 @@
 
 //===============================================================================
 // Liczność badanego zbioru
-#define LICZNOSC 1000000
+#define LICZNOSC 2000000
 
 //===============================================================================
 // Wypisz tablicę na ekran przed posortowaniem i po nim
@@ -72,7 +72,7 @@
 // Używana jest tylko dla kluczy całkowitoliczbowych.
 // Jest ignorowana przy ustawieniu na tak flagi KLUCZE_UNIKATOWE
 // Wartość minimalna jest stała i równa 0.
-#define MAX_WARTOSC_KLUCZA        0 // dla wartości == 0 flaga ta przyjmuje wartość liczności tablicy pomniejszonej o 1.
+#define MAX_WARTOSC_KLUCZA 0 // dla wartości == 0 flaga ta przyjmuje wartość liczności tablicy pomniejszonej o 1.
 
 //===============================================================================
 // Flagi sterujące raportem
