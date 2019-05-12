@@ -12,7 +12,8 @@ def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix,
     plt.title(title_prefix + ' for {0} algorithm'.format(
                                                          re.sub(r'\_',
                                                                 ' ',
-                                                                alg_name))
+                                                                alg_name)
+                                                         )
               )
 
     plt.legend(legend_list, loc='upper left')
@@ -43,11 +44,11 @@ def plot_log(execution_time_array, data_array_size,
     plt.plot(
         data_big_val_log, exec_time_log_arr
     )
-    plt.text(10.0, 0.75,  # position of the text relative to axes
+    plt.text(10.0, 0.15,  # position of the text relative to axes
              'Linregress: slope = {0}\n err = {1}'.format(slope, err),
              horizontalalignment='left',
              verticalalignment='baseline')
-    save_plot(alg_name, 'exec_log_lin', 'Log of exec time',
+    save_plot(alg_name, 'exec_log_log', 'Log of exec time',
               [''],
               'Log of exec time',
               is_log=True)

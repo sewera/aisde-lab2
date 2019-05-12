@@ -81,7 +81,7 @@ echo "[S] Done collecting samples"
 echo -ne "]\n" >> ./out/$filename.json
 echo -ne "]\n" >> ./out/$filename\_count.json
 
-python3 plot.py out/$filename.json out/$filename\_count.json
+python3 plot.py -l out/$filename.json out/$filename\_count.json
 # You may have to change python3 to python on OSX
 
 echo "[I] Plots should be in out/ directory"
@@ -91,3 +91,5 @@ echo "Usage: python3 plot.py -c <input_file0>,<input_file1>,... -u <in_file_coun
 echo " for example:"
 echo "python3 plot.py -c out/shell_knuth.json,out/shell_sedgewick.json,out/shell_tokuda.json -n out/shell_knuth_count.json"
 echo "When comparing, use the same array sizes across all algorithms"
+echo "-> If you find this script usable in any way,"
+echo "-> feel free to star me on github: https://github.com/jazzsewera/"
