@@ -10,7 +10,7 @@ git clone git@github.com:jazzsewera/aisde-lab2.git
 if you want to check out new improvements in this script, type:
 `git pull` from the repo directory.
 
-Usage:
+## Usage
 First, check if you have python3 installed. If you are not sure, type in:
 ```bash
 python3 --version
