@@ -5,7 +5,7 @@ Nine hours of life wasted, hope someone, someday will have easier life because o
 
 For your convenience, please install git, then type:
 ```bash
-git clone git@github.com:jazzsewera/aisde-lab2.git
+git clone https://github.com/jazzsewera/aisde-lab2.git
 ```
 if you want to check out new improvements in this script, type:
 `git pull` from the repo directory.
