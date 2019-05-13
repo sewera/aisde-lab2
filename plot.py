@@ -1,10 +1,15 @@
 import numpy as np
 from scipy.stats import linregress
-from matplotlib import pyplot as plt
 import sys
 import getopt
 import json
 import re
+try:
+    from matplotlib import pyplot as plt
+except Exception:
+    import matplotlib
+    matplotlib.use('pdf')
+    from matplotlib import pyplot as plt
 
 
 def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix,

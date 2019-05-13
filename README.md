@@ -1,7 +1,7 @@
-# Utilities for the second lab class in aisde
-Basically utilities to plot time complexity of different sorting algorithms
+# Utilities for the second and third lab class in aisde
+Please read this readme carefully.
 
-Nine hours of life wasted, hope someone, someday will have easier life because of it
+Nine hours of life wasted, hope someone, someday will have easier life because of it.
 
 For your convenience, please install git, then type:
 ```bash
@@ -22,9 +22,9 @@ if you see `Python 3.6.x` or `Python 3.7.x`, you are almost all set. If not,
 
 Then you need to install python packages. `cd` to this repo, then type:
 ```bash
-pip3 install -r requirements.txt
+sudo -H pip3 install -r requirements.txt
 ```
-if the command does not exist, try: `python3 -m pip install -r requirements.txt`
+if the command does not exist, try: `sudo -H python3 -m pip install -r requirements.txt`
 
 Set desired parameters in `src/control*` files, then:
 ```bash
