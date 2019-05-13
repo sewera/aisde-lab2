@@ -35,6 +35,8 @@ then
   read -p "Repeating values? [0/1]: " repeat
 fi
 
+mkdir -p bin
+
 make clean > /dev/null # delete all binaries; -j 4 or -j 2 for multi-threading
 echo "[I] Removed binaries"
 
