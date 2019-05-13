@@ -23,11 +23,22 @@ Set desired parameters in `src/control*` files, then:
 ```bash
 ./lab.sh
 ```
-and follow the instructions.
+and follow the instructions. Oh, and of course, you will also need `make` and `g++`
 
 ### Hint
 Choose filename accordingly to the algorithm you want to test. Eg. `quick_lomuto` or `heap_leaf_root_exchange`.  
 You can type it with underscores (`_`) or with spaces (` `), which will be automatically converted to underscores.
+
+### Performance
+To improve the performance slightly,
+edit the following lines in `lab.sh`:
+```bash
+# << @63
+  make > /dev/null # -j 4 or -j 2 for multi-threading
+# >> @63
+  make -j 4 > /dev/null # -j 4 or -j 2 for multi-threading
+```
+change this `4` to the number of CPU cores that you have.
 
 Usage of comparison of two or more algorithms is explained in lab.sh file.
 

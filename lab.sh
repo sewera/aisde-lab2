@@ -35,9 +35,7 @@ then
   read -p "Repeating values? [0/1]: " repeat
 fi
 
-make clean -j 4 > /dev/null # delete all binaries
-# if there are problems with multi-threading,
-# change -j 4 to -j 2 or -j 1
+make clean > /dev/null # delete all binaries; -j 4 or -j 2 for multi-threading
 echo "[I] Removed binaries"
 
 mkdir -p out/pdf
@@ -62,9 +60,8 @@ do
   fi
 
   rm -f ./aisde23 ./bin/main.o
-  make -j 4 > /dev/null
-  # if there are problems with multi-threading,
-  # change -j 4 to -j 2 or -j 1
+  make > /dev/null # -j 4 or -j 2 for multi-threading
+
   echo -n "."
 
   ./aisde23 | tail -n 1 >> ./out/$filename.json
