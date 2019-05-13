@@ -17,6 +17,8 @@ fi
 sed -i -e "s/^#define WYPISZ_NA_KONSOLE tak/#define WYPISZ_NA_KONSOLE nie/g" ./src/control.h
 
 read -p "Enter filename (without an extension): " filename
+filename=$(echo $filename | sed -e "s/ /_/g")
+
 read -p "Enter tested array sizes (space separated): " values
 if [ -z "$values" ]
 then

@@ -8,9 +8,13 @@ Set desired parameters in `src/control*` files, then:
 ```bash
 ./lab.sh
 ```
-and follow the instructions
+and follow the instructions.
 
-Usage of comparison of two or more algorithms is explained in lab2.sh file.
+### Hint
+Choose filename accordingly to the algorithm you want to test. Eg. `quick_lomuto` or `heap_leaf_root_exchange`.  
+You can type it with underscores (`_`) or with spaces (` `), which will be automatically converted to underscores.
+
+Usage of comparison of two or more algorithms is explained in lab.sh file.
 
 Everyting mine licensed under MIT license. If stated otherwise (different copyright claim), the code is 2019 (C) Błażej Sewera
 
