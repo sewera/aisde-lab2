@@ -13,7 +13,7 @@ except Exception:
 
 
 def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix,
-              is_log=False):
+              is_log=False, axes=None):
     plt.title(title_prefix + ' for {0} algorithm'.format(
                                                          re.sub(r'\_',
                                                                 ' ',
@@ -24,6 +24,7 @@ def save_plot(alg_name, file_suffix, y_label, legend_list, title_prefix,
     plt.legend(legend_list, loc='upper left')
     if is_log:
         plt.xlabel('Log of no. of elements')
+        axes.get_legend().remove()
     else:
         plt.xlabel('No. of elements in array')
     plt.ylabel(y_label)
@@ -46,17 +47,28 @@ def plot_log(execution_time_array, data_array_size,
     slope, _, _, _, err = linregress(data_big_val_log, exec_time_log_arr)
     # print(slope)
     # print(err)
+    ax = plt.axes()
     plt.plot(
         data_big_val_log, exec_time_log_arr
     )
-    plt.text(10.0, 0.15,  # position of the text relative to axes
-             'Linregress: slope = {0}\n err = {1}'.format(slope, err),
+    plt.text(0.5, 0.15,  # position of the text relative to axes
+             '  Linregress:\nslope = {0}\n  err = {1}'.format(
+                 np.around(slope, 5), np.around(err, 5)
+             ),
              horizontalalignment='left',
-             verticalalignment='baseline')
+             verticalalignment='baseline',
+             transform=ax.transAxes,
+             fontdict=dict(
+                           family='monospace',
+                           color='darkred',
+                           weight='bold',
+                           size=12)
+             )
     save_plot(alg_name, 'exec_log_log', 'Log of exec time',
               [''],
               'Log of exec time',
-              is_log=True)
+              is_log=True,
+              axes=ax)
     plt.clf()
 
 
