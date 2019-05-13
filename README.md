@@ -26,6 +26,12 @@ sudo -H pip3 install -r requirements.txt
 ```
 if the command does not exist, try: `sudo -H python3 -m pip install -r requirements.txt`
 
+If you see `No module named pip`, install `pip` package:
+
+`sudo apt install python3-pip` for Debian-based
+
+`sudo pacman -S python-pip` for Arch-based
+
 Set desired parameters in `src/control*` files, then:
 ```bash
 ./lab.sh
