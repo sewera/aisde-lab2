@@ -4,6 +4,21 @@ Basically utilities to plot time complexity of different sorting algorithms
 Nine hours of life wasted, hope someone, someday will have easier life because of it
 
 Usage:
+First, check if you have python3 installed. If you are not sure, type in:
+```bash
+python3 --version
+```
+if you see `Python 3.6.x` or `Python 3.7.x`, you are almost all set. If not,
+`sudo apt install python3` for Debian-based distros (incl. Ubuntu)
+
+`sudo pacman -S python3` for Arch-based distros (eg. Manjaro)
+
+Then you need to install python packages. `cd` to this repo, then type:
+```bash
+pip3 install -r requirements.txt
+```
+if the command does not exist, try: `python3 -m pip install -r requirements.txt`
+
 Set desired parameters in `src/control*` files, then:
 ```bash
 ./lab.sh
