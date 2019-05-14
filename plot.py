@@ -41,9 +41,20 @@ def plot_log(execution_time_array, data_array_size,
     '''Log plot of exec time
     Not very universal, you may have to tweak
     some numbers'''
-    data_big_val = data_array_size  # which elem to start from
-    data_big_val_log = np.log2(data_big_val)
-    exec_time_log_arr = np.log2(execution_time_array)
+    data_big_val = data_array_size
+
+    if 0 not in execution_time_array:
+        exec_time_log_arr = np.log2(execution_time_array)
+        data_big_val_log = np.log2(data_big_val)
+    else:
+        print('Some of the values in exec_time are 0')
+        print('and logarithm of 0 is minus infinity.')
+        print('Discarding those values for this plot')
+        exec_time_arr = [x for x in execution_time_array if x is not 0]
+        exec_time_log_arr = np.log2(exec_time_arr)
+        arr_start = len(data_big_val) - len(exec_time_arr)
+        data_big_val_log = np.log2(data_big_val[arr_start:])
+
     slope, _, _, _, err = linregress(data_big_val_log, exec_time_log_arr)
     # print(slope)
     # print(err)
