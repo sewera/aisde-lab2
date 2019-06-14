@@ -60,7 +60,7 @@ def plot_log(execution_time_array, data_array_size,
     # print(err)
     ax = plt.axes()
     plt.plot(
-        data_big_val_log, exec_time_log_arr
+        data_big_val_log, exec_time_log_arr, 'o-'
     )
     plt.text(0.5, 0.15,  # position of the text relative to axes
              '  Linregress:\nslope = {0}\n  err = {1}'.format(
@@ -106,7 +106,7 @@ def plot_standard(argv, do_plot_log=False):
     '''Execution time plot'''
     execution_time_array = [data_elem['execution_time']
                             for data_elem in data]
-    plt.plot(data_array_size, execution_time_array, '-')
+    plt.plot(data_array_size, execution_time_array, 'o-')
     save_plot(alg_name, 'exec_time', 'Execution time [s]',
               ['Execution time'],
               'Time complexity')
@@ -118,10 +118,10 @@ def plot_standard(argv, do_plot_log=False):
     com_arr_imp = [elem['implementation']['comparisons'] for elem in data]
     add_arr_imp = [elem['implementation']['additions'] for elem in data]
     plt.plot(
-        data_array_size, com_arr_alg,
-        data_array_size, swps_arr_alg,
-        data_array_size, com_arr_imp,
-        data_array_size, add_arr_imp
+        data_array_size, com_arr_alg, 'o-',
+        data_array_size, swps_arr_alg, 'o-',
+        data_array_size, com_arr_imp, 'o-',
+        data_array_size, add_arr_imp, 'o-'
     )
     legends = [
         'Comparisons (algorithm)',
@@ -157,7 +157,7 @@ def plot_compare(opts, args):
     for data in data_comp:
         execution_time_array = [data_elem['execution_time']
                                 for data_elem in data]
-        plt.plot(data_comp_arr_size, execution_time_array)
+        plt.plot(data_comp_arr_size, execution_time_array, 'o-')
 
     save_plot('all', 'comparison', 'Time of execution [s]',
               legends, 'Time of execution')
